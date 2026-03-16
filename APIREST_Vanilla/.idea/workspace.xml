@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a05c087d-e595-48c0-b6cb-bd3f3c5d4c62" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/handler/LoginHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/handler/UsuarioListHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/dao/UsuarioDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/dao/UsuarioDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/model/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/model/Usuario.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/ApiServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/ApiServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/UsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/UsuarioService.java" afterDir="false" />
     </list>

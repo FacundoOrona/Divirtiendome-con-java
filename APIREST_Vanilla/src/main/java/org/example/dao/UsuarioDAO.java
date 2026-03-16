@@ -8,6 +8,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UsuarioDAO {
 
@@ -47,5 +49,23 @@ public class UsuarioDAO {
         }
         return null; // no encontrado
     }
+
+    public List<Usuario> listarUsuarios() throws SQLException {
+        List<Usuario> usuarios = new ArrayList<>();
+        String sql = "SELECT id, username FROM usuarios";
+
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                Usuario usuario = new Usuario(rs.getString("username"), null);
+                usuario.setId(rs.getInt("id"));
+                usuarios.add(usuario);
+            }
+        }
+        return usuarios;
+    }
+
 
 }

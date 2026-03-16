@@ -3,6 +3,7 @@ package org.example.server;
 import com.sun.net.httpserver.HttpServer;
 import org.example.handler.LoginHandler;
 import org.example.handler.UsuarioHandler;
+import org.example.handler.UsuarioListHandler;
 
 import java.net.InetSocketAddress;
 
@@ -14,7 +15,7 @@ public class ApiServer {
         // asocia la ruta /usuarios con tu lógica de registro.
         server.createContext("/registro", new UsuarioHandler());   // POST registro
         server.createContext("/login", new LoginHandler());        // POST login
-//        server.createContext("/usuarios/list", new UsuarioListHandler()); // GET lista
+        server.createContext("/usuarios/list", new UsuarioListHandler());
 //        server.createContext("/usuarios/get", new UsuarioGetHandler());   // GET por id
 
 

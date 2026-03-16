@@ -6,6 +6,9 @@ import org.example.model.Usuario;
 import org.example.validator.UsuarioValidator;
 import org.mindrot.jbcrypt.BCrypt;
 
+import java.sql.SQLException;
+import java.util.List;
+
 public class UsuarioService {
     private final UsuarioDAO dao = new UsuarioDAO();
 
@@ -38,6 +41,15 @@ public class UsuarioService {
             return false;
         }
     }
+
+    public List<Usuario> obtenerTodos() {
+        try {
+            return dao.listarUsuarios();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error al listar usuarios", e);
+        }
+    }
+
 }
 
 
