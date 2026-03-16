@@ -1,5 +1,5 @@
-import Usuario.Usuario;
-import Usuario.UsuarioDAO;
+package org.example;
+
 
 public class Main {
     public static void main(String[] args) {
