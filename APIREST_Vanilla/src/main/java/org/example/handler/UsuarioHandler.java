@@ -4,7 +4,7 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import org.example.model.Usuario;
 import org.example.dao.UsuarioDAO;
-import org.example.validaciones.UsuarioValidator;
+import org.example.validator.UsuarioValidator;
 
 import java.io.IOException;
 import java.io.InputStream;

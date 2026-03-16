@@ -1,4 +1,4 @@
-package org.example.validaciones;
+package org.example.validator;
 
 import org.example.model.Usuario;
 
