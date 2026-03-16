@@ -1,7 +1,9 @@
 package org.example.handler;
 
+import com.google.gson.Gson;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
+import org.example.model.RegistroResultado;
 import org.example.model.Usuario;
 import org.example.dao.UsuarioDAO;
 import org.example.service.UsuarioService;
@@ -12,10 +14,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
 
-/// UsuarioHandler: maneja las peticiones al endpoint /usuarios.
-/// Si es POST, lee el cuerpo, extrae username y password,
-/// crea el objeto Usuario y lo guarda con el UsuarioDAO.
-/// Devuelve un JSON de confirmación.
 public class UsuarioHandler implements HttpHandler {
     private final UsuarioService service = new UsuarioService();
 
@@ -25,23 +23,32 @@ public class UsuarioHandler implements HttpHandler {
             InputStream is = exchange.getRequestBody();
             String body = new String(is.readAllBytes(), StandardCharsets.UTF_8);
 
-            // Parseo básico
             String username = body.split("\"username\":\"")[1].split("\"")[0];
             String password = body.split("\"password\":\"")[1].split("\"")[0];
 
             Usuario usuario = new Usuario(username, password);
 
-            // Usar el service para registrar
-            boolean registrado = service.registrarUsuario(usuario);
+            RegistroResultado resultado = service.registrarUsuario(usuario);
 
             String response;
             int statusCode;
-            if (registrado) {
-                response = "{\"status\":\"Usuario registrado\"}";
-                statusCode = 201;
-            } else {
-                response = "{\"error\":\"Datos inválidos\"}";
-                statusCode = 400;
+
+            switch (resultado) {
+                case CREADO:
+                    response = "{\"status\":\"Usuario registrado\"}";
+                    statusCode = 201;
+                    break;
+                case DATOS_INVALIDOS:
+                    response = "{\"error\":\"Datos inválidos\"}";
+                    statusCode = 400;
+                    break;
+                case USUARIO_EXISTE:
+                    response = "{\"error\":\"Usuario ya existe\"}";
+                    statusCode = 409;
+                    break;
+                default:
+                    response = "{\"error\":\"Error interno\"}";
+                    statusCode = 500;
             }
 
             exchange.getResponseHeaders().set("Content-Type", "application/json");
@@ -54,4 +61,5 @@ public class UsuarioHandler implements HttpHandler {
         }
     }
 }
+
 

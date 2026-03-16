@@ -10,26 +10,25 @@ import java.sql.SQLException;
 
 public class UsuarioDAO {
 
-    public void registrarUsuario(Usuario usuario) {
+    public boolean registrarUsuario(Usuario usuario) throws SQLException {
         String sql = "INSERT INTO usuarios (username, password) VALUES (?, ?)";
 
-        try (Connection conn = DatabaseConnection.getConection();
-             PreparedStatement statement = conn.prepareStatement(sql))
-        {
-            //Encriptar contraseña
-            String hashPassword = BCrypt.hashpw(usuario.getPassword(), BCrypt.gensalt());
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            statement.setString(1, usuario.getUsername());
-            statement.setString(2, hashPassword);
+            stmt.setString(1, usuario.getUsername());
+            stmt.setString(2, usuario.getPassword());
 
-            int filas = statement.executeUpdate();
-            if (filas > 0) {
-                System.out.println("Usuario registrado correctamente");
-            }
+            int filas = stmt.executeUpdate();
+            return filas > 0;
 
         } catch (SQLException e) {
-            System.out.println("Error al registrar ususario: " + e.getMessage());;
+            if (e.getMessage().contains("Duplicate entry")) {
+                return false; // usuario ya existe
+            }
+            throw e; // otro error
         }
     }
+
 
 }
