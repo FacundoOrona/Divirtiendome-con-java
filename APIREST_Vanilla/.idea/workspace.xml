@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a05c087d-e595-48c0-b6cb-bd3f3c5d4c62" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/ApiServer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/UsuarioHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/UsuarioDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/UsuarioDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/handler/LoginHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/dao/UsuarioDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/dao/UsuarioDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/model/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/model/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/ApiServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/ApiServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/UsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/UsuarioService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +19,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -36,6 +37,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.ApiServer.executor": "Run",
     "Application.Main.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -47,16 +49,17 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="org.example.handler" />
       <recent name="org.example" />
     </key>
   </component>
   <component name="RunManager" selected="Application.ApiServer">
     <configuration name="ApiServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.ApiServer" />
+      <option name="MAIN_CLASS_NAME" value="org.example.server.ApiServer" />
       <module name="APIREST_Vanilla" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.*" />
+          <option name="PATTERN" value="org.example.server.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -69,7 +72,7 @@
       <module name="APIREST_Vanilla" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.*" />
+          <option name="PATTERN" value="org.example.server.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
