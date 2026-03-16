@@ -25,6 +25,19 @@ public class UsuarioService {
             return RegistroResultado.ERROR;
         }
     }
+
+    public boolean login(Usuario usuarioIngresado) {
+        try {
+            Usuario usuarioBD = dao.buscarPorUsername(usuarioIngresado.getUsername());
+            if (usuarioBD == null) {
+                return false; // usuario no existe
+            }
+            // Comparar contraseña ingresada con el hash guardado
+            return BCrypt.checkpw(usuarioIngresado.getPassword(), usuarioBD.getPassword());
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }
 
 
