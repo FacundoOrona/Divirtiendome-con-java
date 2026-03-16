@@ -4,6 +4,7 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import org.example.model.Usuario;
 import org.example.dao.UsuarioDAO;
+import org.example.validaciones.UsuarioValidator;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -30,6 +31,18 @@ public class UsuarioHandler implements HttpHandler {
             String password = body.split("\"password\":\"")[1].split("\"")[0];
 
             Usuario usuario = new Usuario(username, password);
+
+            // Validación antes de registrar
+            if (!UsuarioValidator.validar(usuario)) {
+                String response = "{\"error\":\"Datos inválidos\"}";
+                exchange.getResponseHeaders().set("Content-Type", "application/json");
+                exchange.sendResponseHeaders(400, response.getBytes().length);
+                try (OutputStream os = exchange.getResponseBody()) {
+                    os.write(response.getBytes());
+                }
+                return; // corta el flujo aquí
+            }
+
             dao.registrarUsuario(usuario);
 
             String response = "{\"status\":\"Usuario registrado\"}";
