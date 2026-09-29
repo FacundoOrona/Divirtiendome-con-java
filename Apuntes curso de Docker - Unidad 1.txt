@@ -1,0 +1,96 @@
+Apuntes curso de Docker:
+==================== 1.1 ====================
+
+Que es Docker?
+Docker es una plataforma que permite empaquetar una aplicación junto con todo lo que necesita para ejecutarse —dependencias, librerías, configuración, runtime, etc.— dentro de un contenedor.
+
+Y tiene una relación muy fuerte con DevOps, porque facilita que el software pueda pasar de desarrollo → testing → producción de una manera reproducible, automatizada y consistente.
+
+¿Y qué tiene que ver con DevOps?
+
+DevOps es una forma de trabajar que busca unir desarrollo de software (Development) y operaciones de sistemas (Operations) para que una aplicación pueda pasar de código a producción de manera rápida, automatizada, segura y confiable.
+
+Acá está la conexión importante.
+
+DevOps busca unir desarrollo y operaciones mediante procesos automatizados y reproducibles.
+
+	1. - Arquitectura de Docker -
+Esta diseñada para facilitar el desarrollo, despliegue y ejecución de aplicaciones dentro de contenedores de manera eficiente y segura.
+
+	 Demonio/Servicio de Docker
+Es el proceso que se ejecuta en segundo plano, que gestiona todas las acciones relacionadas con los contenedores en el sistema anfitrión donde funciona Docker. 
+Responsable de iniciar los contenedores desde imágenes, mantenerlos activos y supervisar su desempeño y estado.
+Administrar las imágenes (plantillas para contenedores), redes (comunicación entre contenedores) y volúmenes (almacenamiento de datos).
+
+	Api de Docker 
+Es una interfaz de programación de aplicaciones que permite a los desarrolladores y aplicaciones interactuar con el demonio de Docker (Dockerd) de manera programática.
+(Levantar imágenes, consultar información, etc)
+
+	ComandLine (CLI) de Docker 
+Es una herramienta que permite a los usuarios interactuar con Docker y gestionar sus componentes a través de comandos escritos en una terminal o consola de comandos.
+
+	2. - Contenedores -
+Es una unidad estándar de software que empaqueta el código de una aplicación y todas sus dependencias para que la aplicación se ejecute.
+
+	Características:
+	* Autocontenido: Cada contenedor incluye todo lo necesario para que la aplicación funcione (código, librerías, dependencias, configuración), evitando problemas de configuración en el sistema anfitrión y asegurando la ejecución correcta en cualquier maquina.
+	* Aislado: Los contenedores operan de manera independiente, utilizando recursos del sistema en forma controlada, asegurando que las actividades o fallos en un contenedor no afecten a otros ni al sistema anfitrión, mejorando la seguridad y la integridad.
+	* Independiente: Cada contenedor se gestiona de manera autónoma: puede iniciarse, detenerse, moverse o eliminarse sin afectar a otros, lo que permite flexibilidad y escalabilidad en la gestión de aplicaciones, facilitando actualizaciones y mantenimiento.
+	* Portable: Los contenedores pueden ejecutarse en cualquier sistema de Docker instalado, garantizando que la aplicación funcione de manera consistente en entornos de desarrollo, pruebas o producción, eliminando problemas de diferencias entre infraestructuras.
+
+	3. - Imagen -
+Es una plantilla de solo lectura que contiene el sistema operativo, la aplicación y todas las dependencias necesarias para ejecutar esa aplicación.
+
+	4. - Beneficios de Docker -
+	+ Facilidad de compartir: Docker permite a los desarrolladores empaquetar aplicaciones con todas sus dependencias en contenedores.
+	+ Portabilidad entre sistemas: Los contenedores de Docker pueden ejecutarse en cualquier sistema.
+	+ Consistencia en los entornos de desarrollo y producción: Docker asegura que las aplicaciones se ejecutan de la misma manera en todos los entornos.
+
+
+==================== 1.2 ====================
+
+1. Comandos básicos de Docker
+
+	Comandos para imagenes:
+Docker images : listar imágenes disponibles del dispositivo
+Docker pull nombre-de-la-imagen : descargar imagen
+Docker rmi id-de-la-imagen : eliminar una imagen por id
+Docker image prune : elimina todas las imágenes no utilizadas
+
+	Comandos para contenedores:
+docker run -d -p 8080:80 nombre-contenedor 
+-d : ejecuta el contenedor en segundo plano
+-p : especifica el puerto
+
+docker ps : lista el container que esta en uso
+wget localhost:8080 : verificar que la imagen esta corriendo en el puerto
+
+docker stop id-contenedor : detiene el contenedor
+
+docker ps -a 
+-a : lista los contenedores que no estan en uso
+
+docker start id-container : levanta un contenedor existente
+
+docker restart id-container : reinicia el contenedor
+
+docker pause id-container : pausa el contenedor
+
+docker unpause id-container : saca la pausa
+
+docker logs id-container : muestra los logs
+
+docker rm id-container : elimina un container por id
+
+
+
+
+
+
+
+
+
+
+
+
+
